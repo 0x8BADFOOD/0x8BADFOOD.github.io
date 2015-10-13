@@ -69,7 +69,7 @@
         <div class="span8 offset2 article-content">
 
             
-            <p><img alt="Docker with cron_ " src="../images/docker.png" title="=200x200 &quot;Docker&quot;" />  </p>
+            <p><img alt="Docker with cron" src="http://0x8badfood.github.io/blog/images/docker.png" title="=200x200 &quot;Docker&quot;" />  </p>
 <h2>Create docker file (Dockerfile):</h2>
 <div class="highlight"><pre>FROM busybox
 ADD crontab /var/spool/cron/crontabs/www-data
@@ -78,7 +78,7 @@ CMD crond -f
 
 
 <p>Create cron task in file (crontab):</p>
-<div class="highlight"><pre>* * * * * echo “Current container’s time:”$([Mon Oct 12 21:36:41 2015] +”%Y-%m-%d %H:%M”)&gt;&gt;
+<div class="highlight"><pre>* * * * * echo “Current container’s time:”$([Mon Oct 12 21:36:41 2015] +”%Y-%m-%d %H:%M”)
 </pre></div>
 
 
