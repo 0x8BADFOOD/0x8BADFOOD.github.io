@@ -69,7 +69,7 @@
         <div class="span8 offset2 article-content">
 
             
-            <p><img alt="Docker with cron" src="http://0x8badfood.github.io/blog/images/docker.png" title="=200x200 &quot;Docker&quot;" />  </p>
+            <p><img alt="Docker with cron_ " src="../images/docker.png" title="=200x200 &quot;Docker&quot;" />  </p>
 <h2>Create docker file (Dockerfile):</h2>
 <div class="highlight"><pre>FROM busybox
 ADD crontab /var/spool/cron/crontabs/www-data
@@ -96,12 +96,13 @@ busybox-cron/myrepo   latest              1d1ec072182f        40 minutes ago    
 
 
 <p>Run container:</p>
-<div class="highlight"><pre>docker logs -t  -f 58ac0e023af4
+<div class="highlight"><pre> docker run -d busybox-cron/myrepo
 </pre></div>
 
 
 <p>See result output:</p>
-<div class="highlight"><pre>2015-10-13T04:01:00.203233152Z Current container’s time:2015-10-13 04:01
+<div class="highlight"><pre>docker logs -t  -f 58ac0e023af4
+2015-10-13T04:01:00.203233152Z Current container’s time:2015-10-13 04:01
 2015-10-13T04:02:00.206203618Z Current container’s time:2015-10-13 04:02
 2015-10-13T04:03:00.220089213Z Current container’s time:2015-10-13 04:03
 2015-10-13T04:04:00.219378550Z Current container’s time:2015-10-13 04:04
