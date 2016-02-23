@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Mobie Developr" />
+        <meta name="copyright" content="Mobie Developr" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="csarp, mac, xamarin, mono, HowTo, " />
+
+<meta property="og:title" content="How to run C# app on Mac from command line? "/>
+<meta property="og:url" content="http://0x8badfood.github.io/blog/how-to-run-c-app-on-mac-from-command-line.html" />
+<meta property="og:description" content="Sample of small container" />
+<meta property="og:site_name" content="Red Corner" />
+<meta property="og:article:author" content="Mobie Developr" />
+<meta property="og:article:published_time" content="2015-12-12T14:47:33+01:00" />
+<meta property="" content="2015-12-12T14:47:33+01:00" />
+<meta name="twitter:title" content="How to run C# app on Mac from command line? ">
+<meta name="twitter:description" content="Sample of small container">
+
+        <title>How to run C# app on Mac from command line?  · Red Corner
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://0x8badfood.github.io/blog/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://0x8badfood.github.io/blog/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://0x8badfood.github.io/blog/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://0x8badfood.github.io/blog/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://0x8badfood.github.io/blog/"><span class=site-name>Red Corner</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://0x8badfood.github.io/blog">Home</a></li>
+                            <li ><a href="http://0x8badfood.github.io/blog/categories.html">Categories</a></li>
+                            <li ><a href="http://0x8badfood.github.io/blog/tags.html">Tags</a></li>
+                            <li ><a href="http://0x8badfood.github.io/blog/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://0x8badfood.github.io/blog/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="http://0x8badfood.github.io/blog/how-to-run-c-app-on-mac-from-command-line.html"> How to run C# app on Mac from command line?  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <hr />
+<p>Download and install Xamarin Studio: <a href="https://xamarin.com/download" title="Xamarin Studio">Xamarin Studio</a></p>
+<p>Open terminal and check comands:</p>
+<div class="highlight"><pre>mcs
+mono
+###################
+mcs - C# compiler
+mono - Mono runtime
+</pre></div>
+
+
+<h3>Console example</h3>
+<p>Create file:</p>
+<div class="highlight"><pre>vim monoapp.cs
+
+using System;                 // Importing namespace
+
+class Test                    // Class declaration
+{
+  static void Main()          // Method declaration
+  {
+    //int x = 12 * 30;          // Statement 1
+    Console.WriteLine (&quot;Hello form mono!&quot;);    // Statement 2
+  }                           // End of method
+}
+</pre></div>
+
+
+<p>Compile :</p>
+<div class="highlight"><pre>mcs monoapp.cs
+</pre></div>
+
+
+<p>And run:</p>
+<div class="highlight"><pre>mono monoapp.exe
+</pre></div>
+
+
+<p>Result:</p>
+<div class="highlight"><pre>Hello from mono!
+</pre></div>
+
+
+<p>WinForms UI example:</p>
+<div class="highlight"><pre>using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+public class HelloWorld : Form
+{
+    static public void Main ()
+    {
+        Application.Run (new HelloWorld ());
+    }
+
+    public HelloWorld ()
+    {
+        Button b = new Button ();
+        b.Text = &quot;Click Me!&quot;;
+        b.Click += new EventHandler (Button_Click);
+        Controls.Add (b);
+    }
+
+    private void Button_Click (object sender, EventArgs e)
+    {
+        MessageBox.Show (&quot;Button Clicked!&quot;);
+    }
+}
+</pre></div>
+
+
+<p>Compile and run:</p>
+<div class="highlight"><pre>mcs -pkg:dotnet  win_mono_app.cs
+</pre></div>
+
+
+<p>And run:</p>
+<div class="highlight"><pre>mono win_mono_app.exe
+</pre></div>
+
+
+<p><img alt="Sample UI" src="http://0x8badfood.github.io/blog/images/c_sharp_mono_ui.png" title="=200x200 &quot;WinForms&quot;" />  </p>
+<p>Links:</p>
+<p><a href="http://www.monodevelop.com" title="MonoDevelop">MonoDevelop</a></p>
+<p><a href="https://github.com/xamarin/xamarin-forms-samples" title="Xamarin Samples">Xamarin Samples</a></p>
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-12-12T14:47:33+01:00">Dec 12, 2015</time>
+
+<h4>Last Updated</h4>
+<time datetime="2015-12-12T14:47:33+01:00">Dec 12, 2015</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="http://0x8badfood.github.io/blog/categories.html#howto-ref">HowTo</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#csarp-ref">csarp
+                    <span>1</span>
+</a></li>
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#mac-ref">mac
+                    <span>1</span>
+</a></li>
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#mono-ref">mono
+                    <span>1</span>
+</a></li>
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#xamarin-ref">xamarin
+                    <span>1</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+    <a href="http://code.net/" title="My GitLab Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-gitlab sidebar-social-links"></i></a>
+    <a href="http://code.net/branch/android/" title="My Bassist Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-bassist sidebar-social-links"></i></a>
+    <a href="http://.net" title="My Rassist Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-rassist sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
