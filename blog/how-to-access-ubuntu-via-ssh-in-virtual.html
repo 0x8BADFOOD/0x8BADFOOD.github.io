@@ -4,25 +4,25 @@
         <meta charset="utf-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Mobie Developr" />
-        <meta name="copyright" content="Mobie Developr" />
+        <meta name="author" content="Mobile Developer" />
+        <meta name="copyright" content="Mobile Developer" />
 
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="docker, cron, busybox, HowTo, " />
+<meta name="keywords" content="virtualbox, ssh, ubuntu, termianl, HowTo, " />
 
-<meta property="og:title" content="How to create small container with cron? "/>
-<meta property="og:url" content="http://0x8badfood.github.io/blog/how-to-create-small-container-with-cron.html" />
-<meta property="og:description" content="Sample of working c# code on Mac" />
+<meta property="og:title" content="How to access Ubuntu via SSH in Virtual? "/>
+<meta property="og:url" content="http://0x8badfood.github.io/blog/how-to-access-ubuntu-via-ssh-in-virtual.html" />
+<meta property="og:description" content="Easy access guest Ubuntu in VirtualBox via ssh" />
 <meta property="og:site_name" content="Dev Notes" />
-<meta property="og:article:author" content="Mobie Developr" />
-<meta property="og:article:published_time" content="2015-10-12T00:47:33+02:00" />
-<meta property="" content="2015-10-12T00:47:33+02:00" />
-<meta name="twitter:title" content="How to create small container with cron? ">
-<meta name="twitter:description" content="Sample of working c# code on Mac">
+<meta property="og:article:author" content="Mobile Developer" />
+<meta property="og:article:published_time" content="2016-03-17T11:34:38+01:00" />
+<meta property="" content="2016-03-17T11:34:38+01:00" />
+<meta name="twitter:title" content="How to access Ubuntu via SSH in Virtual? ">
+<meta name="twitter:description" content="Easy access guest Ubuntu in VirtualBox via ssh">
 
-        <title>How to create small container with cron?  · Dev Notes
+        <title>How to access Ubuntu via SSH in Virtual?  · Dev Notes
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://0x8badfood.github.io/blog/how-to-create-small-container-with-cron.html"> How to create small container with cron?  </a></h1>
+    <h1><a href="http://0x8badfood.github.io/blog/how-to-access-ubuntu-via-ssh-in-virtual.html"> How to access Ubuntu via SSH in Virtual?  </a></h1>
     </header>
 </div>
 
@@ -69,45 +69,47 @@
         <div class="span8 offset2 article-content">
 
             
-            <p><img alt="Docker with cron_ " src="http://0x8badfood.github.io/blog/images/docker.png" title="=200x200 &quot;Docker&quot;" /></p>
-<h2>Create docker file (Dockerfile):</h2>
-<div class="highlight"><pre>FROM busybox
-ADD crontab /var/spool/cron/crontabs/www-data
-CMD crond -f
+            <p><img alt="Docker with cron_ " src="http://0x8badfood.github.io/blog/images/title_ssh.png" title="=200x200 &quot;Docker&quot;" /></p>
+<h2>Port forwarding</h2>
+<p>Froward host port 9022 to guest port 22 in VirtualBox settings:</p>
+<p><img alt="Virtualbox settings" src="http://0x8badfood.github.io/blog/images/port_forwarding_virtualbox_settings.png" title="Settings" /></p>
+<p><img alt="Virtualbox settings" src="http://0x8badfood.github.io/blog/images/port_forwarding_virtualbox.png" title="Ports" /></p>
+<h2>SSH connect</h2>
+<p>If you try to connect now  you will get following:</p>
+<div class="highlight"><pre>ssh dev@localhost -p 9022
+ssh_exchange_identification: Connection closed by remote host
 </pre></div>
 
 
-<p>Create cron task in file (crontab):</p>
-<div class="highlight"><pre>* * * * * echo “Current container’s time:”$([Mon Oct 12 21:36:41 2015] +”%Y-%m-%d %H:%M”)
+<p>You need to install ssh server on guest machine (Ubuntu):</p>
+<div class="highlight"><pre>sudo apt-get install openssh-server
 </pre></div>
 
 
-<p>Create image:</p>
-<div class="highlight"><pre>docker build --tag busybox-cron/myrepo .
+<p>After that try connect again (type yes):</p>
+<div class="highlight"><pre>ssh dev@localhost -p 9022
+The authenticity of host ‘[localhost]:9022 ([127.0.0.1]:9022)’ can’t be established.
+ECDSA key fingerprint is SHA256:hHafM4Aoy9TpHEq4ISdsNVhowOp7nocSfK9ER+BoheI.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added ‘[localhost]:9022’ (ECDSA) to the list of known hosts.
+dev@localhost’s password:
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-56-generic x86_64)
+
+* Documentation:  https://help.ubuntu.com/
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+dev@dev-box:~$
 </pre></div>
 
 
-<p>Check that you images:</p>
-<div class="highlight"><pre>docker ps -a
-#output:
-POSITORY            TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-busybox-cron/myrepo   latest              1d1ec072182f        40 minutes ago      1.096 MB
-</pre></div>
-
-
-<p>Run container:</p>
-<div class="highlight"><pre> docker run -d busybox-cron/myrepo
-</pre></div>
-
-
-<p>See result output:</p>
-<div class="highlight"><pre>docker logs -t  -f 58ac0e023af4
-2015-10-13T04:01:00.203233152Z Current container’s time:2015-10-13 04:01
-2015-10-13T04:02:00.206203618Z Current container’s time:2015-10-13 04:02
-2015-10-13T04:03:00.220089213Z Current container’s time:2015-10-13 04:03
-2015-10-13T04:04:00.219378550Z Current container’s time:2015-10-13 04:04
-2015-10-13T04:05:00.224196714Z Current container’s time:2015-10-13 04:05
-</pre></div>
+<p><strong>Done!</strong></p>
             
             
             <hr/>
@@ -115,22 +117,25 @@ busybox-cron/myrepo   latest              1d1ec072182f        40 minutes ago    
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-10-12T00:47:33+02:00">Oct 12, 2015</time>
+            <time pubdate="pubdate" datetime="2016-03-17T11:34:38+01:00">Mar 17, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2015-10-12T00:47:33+02:00">Oct 12, 2015</time>
+<time datetime="2016-03-17T11:34:38+01:00">Mar 17, 2016</time>
 
             <h4>Category</h4>
             <a class="category-link" href="http://0x8badfood.github.io/blog/categories.html#howto-ref">HowTo</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://0x8badfood.github.io/blog/tags.html#busybox-ref">busybox
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#ssh-ref">ssh
                     <span>1</span>
 </a></li>
-                <li><a href="http://0x8badfood.github.io/blog/tags.html#cron-ref">cron
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#termianl-ref">termianl
                     <span>1</span>
 </a></li>
-                <li><a href="http://0x8badfood.github.io/blog/tags.html#docker-ref">docker
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#ubuntu-ref">ubuntu
+                    <span>1</span>
+</a></li>
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#virtualbox-ref">virtualbox
                     <span>1</span>
 </a></li>
             </ul>
