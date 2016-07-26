@@ -5,50 +5,33 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://0x8badfood.github.io/blog/</loc>
-<<<<<<< HEAD
-<lastmod>2016-07-25T21:18:06-00:00</lastmod>
-=======
-<lastmod>2016-05-24T17:38:40-00:00</lastmod>
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
+<lastmod>2016-07-26T12:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://0x8badfood.github.io/blog/archives.html</loc>
-<<<<<<< HEAD
-<lastmod>2016-07-25T21:18:06-00:00</lastmod>
-=======
-<lastmod>2016-05-24T17:38:40-00:00</lastmod>
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
+<lastmod>2016-07-26T12:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://0x8badfood.github.io/blog/tags.html</loc>
-<<<<<<< HEAD
-<lastmod>2016-07-25T21:18:06-00:00</lastmod>
-=======
-<lastmod>2016-05-24T17:38:40-00:00</lastmod>
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
+<lastmod>2016-07-26T12:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://0x8badfood.github.io/blog/categories.html</loc>
-<<<<<<< HEAD
-<lastmod>2016-07-25T21:18:06-00:00</lastmod>
-=======
-<lastmod>2016-05-24T17:38:40-00:00</lastmod>
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
+<lastmod>2016-07-26T12:10:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<<<<<<< HEAD
 <loc>http://0x8badfood.github.io/blog/how-to-stream-webcam-video-on-webpage.html</loc>
 <lastmod>2016-07-25T19:43:52+02:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -56,8 +39,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-=======
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
 <loc>http://0x8badfood.github.io/blog/some-git-tips-to-make-your-life-easy.html</loc>
 <lastmod>2016-05-18T21:44:45+02:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -94,11 +75,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://0x8badfood.github.io/blog/category/howto.html</loc>
-<<<<<<< HEAD
 <lastmod>2016-07-25T19:43:52+00:09</lastmod>
-=======
-<lastmod>2016-05-18T21:44:45+00:09</lastmod>
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -153,7 +130,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<<<<<<< HEAD
 <loc>http://0x8badfood.github.io/blog/tag/ubuntu.html</loc>
 <lastmod>2016-07-25T19:43:52+00:09</lastmod>
 <changefreq>daily</changefreq>
@@ -161,8 +137,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-=======
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
 <loc>http://0x8badfood.github.io/blog/tag/gerrit.html</loc>
 <lastmod>2016-05-16T22:16:05+00:09</lastmod>
 <changefreq>daily</changefreq>
@@ -191,7 +165,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<<<<<<< HEAD
 <loc>http://0x8badfood.github.io/blog/tag/video.html</loc>
 <lastmod>2016-07-25T19:43:52+00:09</lastmod>
 <changefreq>daily</changefreq>
@@ -199,8 +172,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-=======
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
 <loc>http://0x8badfood.github.io/blog/tag/opensource.html</loc>
 <lastmod>2016-05-16T22:16:05+00:09</lastmod>
 <changefreq>daily</changefreq>
@@ -208,13 +179,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<<<<<<< HEAD
 <loc>http://0x8badfood.github.io/blog/tag/linux.html</loc>
 <lastmod>2016-07-25T19:43:52+00:09</lastmod>
-=======
-<loc>http://0x8badfood.github.io/blog/tag/ubuntu.html</loc>
-<lastmod>2016-03-17T11:34:38+00:09</lastmod>
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -256,11 +222,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://0x8badfood.github.io/blog/author/mobile-developer.html</loc>
-<<<<<<< HEAD
 <lastmod>2016-07-25T19:43:52+00:09</lastmod>
-=======
-<lastmod>2016-05-18T21:44:45+00:09</lastmod>
->>>>>>> 6bfd81101f2a71b005946929ad92381350397449
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
