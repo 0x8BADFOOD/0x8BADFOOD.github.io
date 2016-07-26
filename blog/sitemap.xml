@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://0x8badfood.github.io/blog/</loc>
-<lastmod>2016-07-25T21:04:30-00:00</lastmod>
+<lastmod>2016-07-25T21:18:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://0x8badfood.github.io/blog/archives.html</loc>
-<lastmod>2016-07-25T21:04:30-00:00</lastmod>
+<lastmod>2016-07-25T21:18:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://0x8badfood.github.io/blog/tags.html</loc>
-<lastmod>2016-07-25T21:04:30-00:00</lastmod>
+<lastmod>2016-07-25T21:18:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://0x8badfood.github.io/blog/categories.html</loc>
-<lastmod>2016-07-25T21:04:30-00:00</lastmod>
+<lastmod>2016-07-25T21:18:06-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -34,13 +34,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://0x8badfood.github.io/blog/how-to-stream-webcam-video-on-webpage.html</loc>
 <lastmod>2016-07-25T19:43:52+02:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://0x8badfood.github.io/blog/no-permissions.html</loc>
-<lastmod>2016-05-18T21:44:45+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
