@@ -10,19 +10,19 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="git, HowTo, " />
+<meta name="keywords" content="ubuntu, video, linux, HowTo, " />
 
-<meta property="og:title" content="Some git tips to make your life easy "/>
-<meta property="og:url" content="http://0x8badfood.github.io/blog/some-git-tips-to-make-your-life-easy.html" />
-<meta property="og:description" content="Effective using git" />
+<meta property="og:title" content="How to stream webcam video on webpage "/>
+<meta property="og:url" content="http://0x8badfood.github.io/blog/how-to-stream-webcam-video-on-webpage.html" />
+<meta property="og:description" content="Quick setup video streaming on ubuntu machine" />
 <meta property="og:site_name" content="Dev Notes" />
 <meta property="og:article:author" content="Mobile Developer" />
-<meta property="og:article:published_time" content="2016-05-18T21:44:39+02:00" />
-<meta property="" content="2016-05-18T21:44:45+02:00" />
-<meta name="twitter:title" content="Some git tips to make your life easy ">
-<meta name="twitter:description" content="Effective using git">
+<meta property="og:article:published_time" content="2016-07-25T19:43:45+02:00" />
+<meta property="" content="2016-07-25T19:43:52+02:00" />
+<meta name="twitter:title" content="How to stream webcam video on webpage ">
+<meta name="twitter:description" content="Quick setup video streaming on ubuntu machine">
 
-        <title>Some git tips to make your life easy  · Dev Notes
+        <title>How to stream webcam video on webpage  · Dev Notes
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -69,7 +69,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://0x8badfood.github.io/blog/some-git-tips-to-make-your-life-easy.html"> Some git tips to make your life easy  </a></h1>
+    <h1><a href="http://0x8badfood.github.io/blog/how-to-stream-webcam-video-on-webpage.html"> How to stream webcam video on webpage  </a></h1>
     </header>
 </div>
 
@@ -77,103 +77,76 @@
         <div class="span8 offset2 article-content">
 
             
-            <p><img alt="Git " src="http://0x8badfood.github.io/blog/images/git.png" title="=200x200 &quot;git&quot;" /></p>
-<h2>Update last commit</h2>
-<div class="highlight"><pre>git commit --amend
+            <p>We will use Ubutu 14.04 in virtual box and MacOS as host.</p>
+<h3>Initial setup for guise OS (Ubuntu 14.04)</h3>
+<p>To have guvcview working we need stable version ()
+Details could be found <a href="https://trisquel.info/en/forum/no-picture-guvcview">here</a>
+Add ppa:</p>
+<div class="highlight"><pre>sudo apt-add-repository “deb http://ppa.launchpad.net/pj-assis/ppa/ubuntu trusty main”
+sudo apt-get update
 </pre></div>
 
 
-<h2>Revert last commit</h2>
-<div class="highlight"><pre><span class="nv">$ </span>git commit -m <span class="s2">&quot;Something terribly misguided&quot;</span>              <span class="o">(</span>1<span class="o">)</span>
-<span class="nv">$ </span>git reset --soft HEAD~                                    <span class="o">(</span>2<span class="o">)</span>
-<span class="s">&lt;&lt; edit file</span>s as necessary &gt;&gt;                               <span class="o">(</span>3<span class="o">)</span>
-<span class="nv">$ </span>git add ...                                               <span class="o">(</span>4<span class="o">)</span>
-<span class="nv">$ </span>git commit -c ORIG_HEAD                                   <span class="o">(</span>5<span class="o">)</span>
+<p>Install guvcview and moitoin:</p>
+<div class="highlight"><pre>sudo apt-get install guvcview
+sudo apt-get install motion
 </pre></div>
 
 
-<p>Source: <a href="http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit">Stackoverflow</a></p>
-<h2>Update author &amp; email in your previous commits</h2>
-<p>Update author for all your commits:</p>
-<div class="highlight"><pre>git filter-branch -f --env-filter &quot;GIT_AUTHOR_NAME=&#39;Mobile Developer&#39;; GIT_AUTHOR_EMAIL=&#39;your_mail@gmail.com&#39;; GIT_COMMITTER_NAME=&#39;Mobile Developer&#39;; GIT_COMMITTER_EMAIL=&#39;app.mobile.developer@gmail.com&#39;;&quot; HEAD
+<p>Add config for motion (Details <a href="https://gist.github.com/endolith/2052778">here</a> and <a href="https://www.maketecheasier.com/setup-motion-detection-webcam-ubuntu/">here</a>):</p>
+<div class="highlight"><pre>mkdir ~/.motion
+vim ~/.motion/motion.conf
 </pre></div>
 
 
-<p>Source: <a href="http://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past">Stackoverflow</a></p>
-<h2>Commit in the past (with date)</h2>
-<div class="highlight"><pre>git commit --date=&quot;`date --date=&#39;2 day ago&#39;`&quot; -am &quot;update&quot;
-git commit --date=”Wed Feb 16 14:00 2037 +0100”
+<p>Add following to motion.conf:</p>
+<div class="highlight"><pre>webcam_port 8081
+webcam_localhost off
 </pre></div>
 
 
-<p>Check author and commiter dates:</p>
-<div class="highlight"><pre>git log --date-order --date=iso --pretty=format:’Author Date[%ad] Committer Date [%cd]‘
+<h3>Initial setup for host OS (MacOS)</h3>
+<p>To have access to you camera in guies OS you need to enable it in VritualBox</p>
+<p>From VBox command line:</p>
+<div class="highlight"><pre>VBoxManage list vms
+VBoxManage list webcams
+Video Input Devices: 2
+.1 “Logitech Camera”
+0x12200000046d081b
+.2 “FaceTime HD Camera”
+CC24553911QF6VVD1
+VBoxManage controlvm “ubunut-dev” webcam attach /dev/video0
 </pre></div>
 
 
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Variable Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>author date</td>
-<td>GIT_AUTHOR_DATE</td>
-<td>notes when this commit was originally made</td>
-</tr>
-<tr>
-<td>commit date</td>
-<td>GIT_COMMITTER_DATE</td>
-<td>gets changed every time the commit is being modified</td>
-</tr>
-</tbody>
-</table>
-<p>In git log you see author date:</p>
-<div class="highlight"><pre>commit b9195931207eaaf8763c585595e6347542e9261d
-Author: Mobile Developer &lt;app.mobile.developer@gmail.com&gt;
-Date:   Wed Nov 11 17:34:35 2015 -0800
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        Author Date
+<p>From VBox GUI:</p>
+<p><img alt="webcams in vbox" src="http://0x8badfood.github.io/blog/images/webcams_virtual_box.png" title="=200x200 &quot;webcam&quot;" /></p>
+<p><a href="https://www.virtualbox.org/manual/ch09.html#idm7154">VirtualBox Documentation</a></p>
+<p>When finish check that webcam device is available in guest OS(Ubutu):</p>
+<div class="highlight"><pre>ls -la /dev/video*
+crw-rw----+ 1 root video 81, 0 Jul 25 20:34 /dev/video0
 </pre></div>
 
 
-<p>To check author and committer dates use following command:</p>
-<div class="highlight"><pre>git log --date-order --date=iso --pretty=format:’Author Date[%ad] Committer Date [%cd]‘
-
-GIT_AUTHOR_DATE=$(date -v-5d) GIT_COMMITTER_DATE=$(date -v-5d) git commit -m &quot;Added Additionals headers&quot;
+<p>Now we are ready to test. From terminal on Ubutnu run command:</p>
+<div class="highlight"><pre>guvcview
 </pre></div>
 
 
-<h2>Summary</h2>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Update last commit</td>
-<td><strong>git commit --amend</strong></td>
-</tr>
-<tr>
-<td>Commit in past</td>
-<td><strong>git commit --date="<code>date --date='2 day ago'</code>" -am "update"</strong></td>
-</tr>
-<tr>
-<td>Revert last commit</td>
-<td><strong>git reset --soft HEAD~</strong></td>
-</tr>
-</tbody>
-</table>
+<p>Check that camera is working</p>
+<p><img alt="webcams in vbox" src="http://0x8badfood.github.io/blog/images/working_cam.png" title="webcam" /></p>
+<p>Testing streaming on web page. Run form terminal:</p>
+<div class="highlight"><pre>motion
+</pre></div>
+
+
+<p>And open url: http://localhost:8081/</p>
+<p>You should see your video on page:</p>
+<p><img alt="webcams in vbox" src="http://0x8badfood.github.io/blog/images/working_webcam.png" title="webcam" /></p>
 <p>Sources:</p>
-<p><a href="http://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past">Stackoverflow</a></p>
-<p><a href="https://git-scm.com/book/ch2-3.html">Git documentation</a></p>
+<p><a href="https://launchpad.net/~pj-assis/+archive/ubuntu/ppa">PPA for guvcview</a></p>
+<p><a href="https://www.virtualbox.org/manual/ch09.html#idm7154">VirtualBox Documentation</a>
+<!--<a href="http://link">TITLE</a>--></p>
 <!--## Summary-->
 
 <!--Action | Command-->
@@ -192,17 +165,23 @@ GIT_AUTHOR_DATE=$(date -v-5d) GIT_COMMITTER_DATE=$(date -v-5d) git commit -m &qu
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-05-18T21:44:39+02:00">May 18, 2016</time>
+            <time pubdate="pubdate" datetime="2016-07-25T19:43:45+02:00">Jul 25, 2016</time>
 
 <h4>Last Updated</h4>
-<time datetime="2016-05-18T21:44:45+02:00">May 18, 2016</time>
+<time datetime="2016-07-25T19:43:52+02:00">Jul 25, 2016</time>
 
             <h4>Category</h4>
             <a class="category-link" href="http://0x8badfood.github.io/blog/categories.html#howto-ref">HowTo</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://0x8badfood.github.io/blog/tags.html#git-ref">git
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#linux-ref">linux
+                    <span>1</span>
+</a></li>
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#ubuntu-ref">ubuntu
                     <span>2</span>
+</a></li>
+                <li><a href="http://0x8badfood.github.io/blog/tags.html#video-ref">video
+                    <span>1</span>
 </a></li>
             </ul>
 <h4>Contact</h4>
